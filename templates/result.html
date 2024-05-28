@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big Basket Cart Prediction Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .header img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        .header h1 {
+            margin: 0;
+        }
+        table.data {
+            border-collapse: collapse;
+            width: 80%;
+            margin-bottom: 20px;
+        }
+        table.data th, table.data td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        table.data th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Logo">
+        <h1>Big Basket Cart Prediction Result</h1>
+    </div>
+    <h2>Top 10 Product Pairs with Highest Lift</h2>
+    {% for table in tables %}
+        {{ table|safe }}
+    {% endfor %}
+    <h2>Products Picked More Frequently:</h2>
+    {% if picked_more %}
+        {{ picked_more|safe }}
+    {% else %}
+        <p>No results found for the given product.</p>
+    {% endif %}
+</body>
+</html>
